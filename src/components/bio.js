@@ -24,25 +24,12 @@ function Bio() {
               marginBottom: rhythm(2.5),
             }}
           >
-            <Image
-              fixed={data.avatar.childImageSharp.fixed}
-              alt={author}
-              style={{
-                marginRight: rhythm(1 / 2),
-                marginBottom: 0,
-                minWidth: 50,
-                borderRadius: `100%`,
-              }}
-              imgStyle={{
-                borderRadius: `50%`,
-              }}
-            />
+            
             <p>
-              Written by <strong>{author}</strong> who lives and works in San
-              Francisco building useful things.
+              Written by <strong>{author}</strong> who lives and works in College Station, TX writing software for Viasat.
               {` `}
               <a href={`https://twitter.com/${social.twitter}`}>
-                You should follow him on Twitter
+                You can follow him on Twitter, but don't expect recent original content.
               </a>
             </p>
           </div>
@@ -52,15 +39,26 @@ function Bio() {
   )
 }
 
+/*
+<Image
+  fixed={data.avatar.childImageSharp.fixed}
+  alt={author}
+  style={{
+    marginRight: rhythm(1 / 2),
+    marginBottom: 0,
+    minWidth: 50,
+    borderRadius: `100%`,
+  }}
+  imgStyle={{
+    borderRadius: `50%`,
+  }}
+/>
+
+
+*/
+
 const bioQuery = graphql`
   query BioQuery {
-    avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
-      childImageSharp {
-        fixed(width: 50, height: 50) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
     site {
       siteMetadata {
         author
@@ -71,5 +69,25 @@ const bioQuery = graphql`
     }
   }
 `
+
+// const bioQuery = graphql`
+//   query BioQuery {
+//     avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
+//       childImageSharp {
+//         fixed(width: 50, height: 50) {
+//           ...GatsbyImageSharpFixed
+//         }
+//       }
+//     }
+//     site {
+//       siteMetadata {
+//         author
+//         social {
+//           twitter
+//         }
+//       }
+//     }
+//   }
+// `
 
 export default Bio
